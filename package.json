@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@clerk/nextjs": "^6.30.1",
     "@geist-ui/react": "^2.2.5",
     "axios": "^1.11.0",
     "bcryptjs": "^3.0.2",
