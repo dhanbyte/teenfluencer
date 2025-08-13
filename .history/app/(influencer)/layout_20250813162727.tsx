@@ -1,6 +1,6 @@
 import React from "react";
 import { ClerkProvider } from "@clerk/nextjs";
-import "@/app/Style/globals.css";     
+import "@/app/";     
 import InfluencerNavbar from "@/Components/(Infuencer)/influencerNavbar";
 
 export default function InfluencerLayout({ children }: { children: React.ReactNode }) {

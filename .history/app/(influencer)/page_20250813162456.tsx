@@ -1,6 +1,6 @@
 "use client";
 
-import InfluencerHomePage from "../(Pages)/influencerhome/page";
+import InfluencerHomePage from "./(Pages)/influencerhome/page";
 
 
 function InfluencerPage() {

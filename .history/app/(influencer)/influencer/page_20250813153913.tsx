@@ -2,7 +2,6 @@
 
 import InfluencerHomePage from "../(Pages)/influencerhome/page";
 
-
 function InfluencerPage() {
  
 

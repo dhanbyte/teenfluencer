@@ -2,14 +2,6 @@
 import { useUser, useClerk } from '@clerk/nextjs';
 import { useRouter } from 'next/navigation';
 import Link from "next/link";
-import { FirstTimeUserTutorial } from '@/Components/(Infuencer)/first-time-tutorial';
-import { WelcomeSection } from '@/Components/(Infuencer)/welcome-section';
-import { ProfileCompletion } from '@/Components/(Infuencer)/profile-completion';
-import { EarningsOverview } from '@/Components/(Infuencer)/earnings-overview';
-import { RecentActivity } from '@/Components/(Infuencer)/recent-activity';
-import { QuickStats } from '@/Components/(Infuencer)/quick-stats';
-import { RecommendedCampaigns } from '@/Components/(Infuencer)/recommended-campaigms';
-import { SocialPerformance } from '@/Components/(Infuencer)/social-performance';
 
 function InfluencerHomePage() {
   const { isSignedIn } = useUser();
@@ -61,36 +53,8 @@ function InfluencerHomePage() {
 
   // For signed-in users
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-indigo-50 dark:from-gray-900 dark:to-gray-800">
-      {/* First Time User Tutorial Popup */}
-      <FirstTimeUserTutorial />
-
-      {/* Main Dashboard Content */}
-      <div className="container mx-auto px-4 py-6 space-y-6">
-        {/* Welcome Section with Animation */}
-        <WelcomeSection />
-
-        {/* Dashboard Grid Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {/* Left Column */}
-          <div className="lg:col-span-1 space-y-6">
-            <ProfileCompletion />
-            <EarningsOverview/>
-          </div>
-
-          {/* Middle Column */}
-          <div className="lg:col-span-1 space-y-6">
-            <QuickStats />
-            <RecentActivity />
-          </div>
-
-          {/* Right Column */}
-          <div className="lg:col-span-1 space-y-6">
-            <RecommendedCampaigns />
-            <SocialPerformance />
-          </div>
-        </div>
-      </div>
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50">
+     
     </div>
   );
 }

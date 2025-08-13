@@ -6,10 +6,6 @@ import { FirstTimeUserTutorial } from '@/Components/(Infuencer)/first-time-tutor
 import { WelcomeSection } from '@/Components/(Infuencer)/welcome-section';
 import { ProfileCompletion } from '@/Components/(Infuencer)/profile-completion';
 import { EarningsOverview } from '@/Components/(Infuencer)/earnings-overview';
-import { RecentActivity } from '@/Components/(Infuencer)/recent-activity';
-import { QuickStats } from '@/Components/(Infuencer)/quick-stats';
-import { RecommendedCampaigns } from '@/Components/(Infuencer)/recommended-campaigms';
-import { SocialPerformance } from '@/Components/(Infuencer)/social-performance';
 
 function InfluencerHomePage() {
   const { isSignedIn } = useUser();

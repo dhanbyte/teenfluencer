@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "forceConsistentCasingInFileNames": false,
+        "forceConsistentCasingInFileNames": false,
 
     "target": "ES2017",
     "baseUrl": ".",
