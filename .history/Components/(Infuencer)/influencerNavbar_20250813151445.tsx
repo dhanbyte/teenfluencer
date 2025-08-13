@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 import { UserButton } from "@clerk/nextjs";
@@ -38,8 +39,8 @@ export default function InfluencerNavbar() {
           TeenFluencer
         </Link>
 
-        {/* Center Menu - only for Laptop/Desktop */}
-        {isLaptop && (
+        {/* Center Menu */}
+        {isLaptop ? (
           <div className="flex items-center space-x-2">
             <NavItem href="/" icon={<FiHome size={18} />} text="Home" />
             <NavItem
@@ -72,6 +73,20 @@ export default function InfluencerNavbar() {
               href="/profile"
               icon={<FiUser size={18} />}
               text="Profile"
+            />
+          </div>
+        ) : (
+          <div className="flex items-center space-x-2">
+            <NavItem href="/" icon={<FiHome size={18} />} text="Home" />
+            <NavItem
+              href="/explore"
+              icon={<FiCompass size={18} />}
+              text="Explore"
+            />
+            <NavItem
+              href="/help"
+              icon={<FiHelpCircle size={18} />}
+              text="Help"
             />
           </div>
         )}

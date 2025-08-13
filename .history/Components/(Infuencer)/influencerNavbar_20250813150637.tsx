@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 import { UserButton } from "@clerk/nextjs";
@@ -9,9 +10,7 @@ import {
   FiDollarSign,
   FiBriefcase,
   FiPlusCircle,
-  FiBell,
-  FiCompass,
-  FiHelpCircle
+  FiBell
 } from "react-icons/fi";
 
 export default function InfluencerNavbar() {
@@ -38,58 +37,64 @@ export default function InfluencerNavbar() {
           TeenFluencer
         </Link>
 
-        {/* Center Menu - only for Laptop/Desktop */}
-        {isLaptop && (
-          <div className="flex items-center space-x-2">
-            <NavItem href="/" icon={<FiHome size={18} />} text="Home" />
-            <NavItem
-              href="/explore"
-              icon={<FiCompass size={18} />}
-              text="Explore"
-            />
-            <NavItem
-              href="/help"
-              icon={<FiHelpCircle size={18} />}
-              text="Help"
-            />
-            <NavItem
-              href="/apply"
-              icon={<FiPlusCircle size={20} />}
-              text="Apply"
-              highlight
-            />
-            <NavItem
-              href="/campaigns"
-              icon={<FiBriefcase size={18} />}
-              text="Campaigns"
-            />
-            <NavItem
-              href="/earnings"
-              icon={<FiDollarSign size={18} />}
-              text="Earnings"
-            />
-            <NavItem
-              href="/profile"
-              icon={<FiUser size={18} />}
-              text="Profile"
-            />
-          </div>
-        )}
+        {isLaptop ? (
+          <>
+            {/* Center nav links (Laptop/Desktop) */}
+            <div className="flex items-center space-x-6">
+              <NavItem href="/" icon={<FiHome size={18} />} text="Home" />
+              <NavItem href="/help" text="Help" />
+              <NavItem href="/explore" text="Explore" />
+              <NavItem
+                href="/campaigns"
+                icon={<FiBriefcase size={18} />}
+                text="Campaigns"
+              />
+              <NavItem
+                href="/apply"
+                icon={<FiPlusCircle size={20} />}
+                text="Apply"
+                highlight
+              />
+              <NavItem
+                href="/earnings"
+                icon={<FiDollarSign size={18} />}
+                text="Earnings"
+              />
+              <NavItem
+                href="/profile"
+                icon={<FiUser size={18} />}
+                text="Profile"
+              />
+            </div>
 
-        {/* Right Side */}
-        <div className="flex items-center space-x-3">
-          <button className="relative p-2 hover:bg-gray-100 rounded-full transition">
-            <FiBell size={20} className="text-gray-700" />
-            <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
-          </button>
-          <UserButton afterSignOutUrl="/" />
-        </div>
+            {/* Right - Notifications + Profile */}
+            <div className="flex items-center space-x-4">
+              <button className="relative p-2 hover:bg-gray-100 rounded-full transition">
+                <FiBell size={20} className="text-gray-700" />
+                <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
+              </button>
+              <UserButton afterSignOutUrl="/" />
+            </div>
+          </>
+        ) : (
+          <>
+            {/* Right side (Mobile/Tablet) */}
+            <div className="flex items-center space-x-3">
+              <button className="relative p-2 hover:bg-gray-100 rounded-full transition">
+                <FiBell size={20} className="text-gray-700" />
+                <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
+              </button>
+              <UserButton afterSignOutUrl="/" />
+            </div>
+          </>
+        )}
       </nav>
 
-      {/* Bottom Navigation (Mobile only) */}
+      {/* Bottom Navigation (Mobile/Tablet only) */}
       {!isLaptop && (
         <div className="fixed bottom-0 left-0 right-0 bg-white shadow-lg z-50 border-t">
-          <div className="grid grid-cols-4">
+          <div className="grid grid-cols-5">
+            <MobileNavItem href="/" icon={<FiHome size={20} />} text="Home" />
             <MobileNavItem
               href="/campaigns"
               icon={<FiBriefcase size={20} />}
@@ -118,7 +123,7 @@ export default function InfluencerNavbar() {
   );
 }
 
-/* Top Navbar Link */
+/* Reusable Nav Item (Top Navbar) */
 function NavItem({
   href,
   icon,

@@ -9,8 +9,6 @@ function InfluencerPage() {
   return (
     <div>
       <InfluencerHomePage/>
-            <InfluencerHomePage/>
-
     </div>
   );
 }
