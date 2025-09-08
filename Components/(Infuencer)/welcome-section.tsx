@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { useUser } from "@clerk/nextjs" // 👈 Import Clerk hook
+import { useRouter } from "next/navigation"
 import { Sparkles, Star } from "lucide-react"
 import { Button } from "../ui/button"
 
@@ -9,6 +10,7 @@ export function WelcomeSection() {
   const [isVisible, setIsVisible] = useState(false)
   const [sparkleAnimation, setSparkleAnimation] = useState(false)
   const { user } = useUser() // 👈 Get logged-in user
+  const router = useRouter()
 
   useEffect(() => {
     setIsVisible(true)
@@ -62,6 +64,9 @@ export function WelcomeSection() {
               </span>
             </h1>
           </div>
+      
+
+          
           <div
             className={`transition-all duration-1000 delay-500 ${
               sparkleAnimation ? "animate-spin" : ""
@@ -80,6 +85,7 @@ export function WelcomeSection() {
         </p>
 
         <Button
+          onClick={() => router.push('/influencer/profile')}
           className={`bg-white text-purple-600 hover:bg-purple-50 font-semibold px-6 py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           }`}

@@ -41,16 +41,16 @@ export default function InfluencerNavbar() {
         {/* Center Menu - only for Laptop/Desktop */}
         {isLaptop && (
           <div className="flex items-center space-x-2">
-            <NavItem href="/" icon={<FiHome size={18} />} text="Home" />
+            <NavItem href="/influencer/influencer" icon={<FiHome size={18} />} text="Dashboard" />
             <NavItem
-              href="/explore"
+              href="/influencer/products"
               icon={<FiCompass size={18} />}
-              text="Explore"
+              text="Products"
             />
             <NavItem
-              href="/help"
+              href="/influencer/analytics"
               icon={<FiHelpCircle size={18} />}
-              text="Help"
+              text="Analytics"
             />
             <NavItem
               href="/apply"
@@ -59,17 +59,12 @@ export default function InfluencerNavbar() {
               highlight
             />
             <NavItem
-              href="/campaigns"
-              icon={<FiBriefcase size={18} />}
-              text="Campaigns"
-            />
-            <NavItem
-              href="/earnings"
+              href="/influencer/earnings"
               icon={<FiDollarSign size={18} />}
               text="Earnings"
             />
             <NavItem
-              href="/profile"
+              href="/influencer/profile"
               icon={<FiUser size={18} />}
               text="Profile"
             />
@@ -91,23 +86,23 @@ export default function InfluencerNavbar() {
         <div className="fixed bottom-0 left-0 right-0 bg-white shadow-lg z-50 border-t">
           <div className="grid grid-cols-4">
             <MobileNavItem
-              href="/campaigns"
+              href="/influencer/products"
               icon={<FiBriefcase size={20} />}
-              text="Campaigns"
+              text="Products"
             />
             <MobileNavItem
-              href="/apply"
+              href="/influencer/analytics"
               icon={<FiPlusCircle size={24} />}
-              text="Apply"
+              text="Analytics"
               isHighlighted
             />
             <MobileNavItem
-              href="/earnings"
+              href="/influencer/earnings"
               icon={<FiDollarSign size={20} />}
               text="Earnings"
             />
             <MobileNavItem
-              href="/profile"
+              href="/influencer/profile"
               icon={<FiUser size={20} />}
               text="Profile"
             />
