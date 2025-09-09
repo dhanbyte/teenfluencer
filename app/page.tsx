@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from 'react';
 import { useUser } from '@clerk/nextjs';
-import { DollarSign, Users, TrendingUp, ArrowRight, Star, Target, Sparkles, Shield, Zap, Gift } from 'lucide-react';
+import { DollarSign, Users, ArrowRight, Star, Target, Zap, Gift, Sparkles } from 'lucide-react';
 import Link from 'next/link';
 
 export default function HomePage() {

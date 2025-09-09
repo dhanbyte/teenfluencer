@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { useUser } from '@clerk/nextjs'
-import { DollarSign, Users, TrendingUp, ArrowRight, Star, Target, User } from 'lucide-react'
+import { DollarSign, Users, ArrowRight, Star, Target, User, TrendingUp } from 'lucide-react'
 import Link from 'next/link'
 
 // Simple card components
@@ -20,7 +20,7 @@ const CardContent = ({ children, className = '' }: { children: React.ReactNode, 
 )
 
 function QuickStats({ userId }: { userId: string }) {
-  const [stats, setStats] = useState({ totalEarnings: 2500, totalClicks: 1250, totalConversions: 85 })
+  const [stats, _setStats] = useState({ totalEarnings: 2500, totalClicks: 1250, totalConversions: 85 })
   
   useEffect(() => {
     // Ensure stats are set
@@ -30,7 +30,7 @@ function QuickStats({ userId }: { userId: string }) {
       totalConversions: 85 
     }
     console.log('Setting stats:', newStats)
-    setStats(newStats)
+    _setStats(newStats)
   }, [userId])
   
   return (
@@ -74,7 +74,7 @@ function QuickStats({ userId }: { userId: string }) {
 
 export default function InfluencerDashboard() {
   const { user } = useUser()
-  const [isVisible, setIsVisible] = useState(false)
+  const [_isVisible, setIsVisible] = useState(false)
   
   useEffect(() => {
     setIsVisible(true)
@@ -92,7 +92,7 @@ export default function InfluencerDashboard() {
             </div>
             <div>
               <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Welcome back, {user.firstName}!</h1>
-              <p className="text-gray-600 text-lg">Here's your influencer dashboard overview</p>
+              <p className="text-gray-600 text-lg">Here&apos;s your influencer dashboard overview</p>
             </div>
           </div>
         </div>

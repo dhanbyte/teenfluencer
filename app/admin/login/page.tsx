@@ -1,7 +1,7 @@
 "use client";
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Lock, User, Shield, Sparkles } from 'lucide-react';
+import { Lock, User, Shield } from 'lucide-react';
 
 export default function AdminLogin() {
   const router = useRouter();

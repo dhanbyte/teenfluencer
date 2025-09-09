@@ -10,7 +10,7 @@ import Footer from '@/Components/Footer'
 
 function LayoutContent({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
-  const { isSignedIn } = useUser()
+  const {} = useUser()
   const isInfluencerRoute = pathname?.startsWith('/influencer')
   const isAdminRoute = pathname?.startsWith('/admin')
   const isAuthRoute = pathname?.startsWith('/sign-')

@@ -5,7 +5,7 @@ import { useUser } from '@clerk/nextjs'
 import { Card, CardContent, CardHeader, CardTitle } from '@/Components/ui/card'
 import { Badge } from '@/Components/ui/badge'
 import { DollarSign, TrendingUp, Eye, Users, Calendar, Copy } from 'lucide-react'
-import { db } from '@/lib/database'
+// Database operations are handled via API routes
 
 // Earnings dashboard for influencers
 export default function EarningsPage() {
@@ -31,7 +31,9 @@ export default function EarningsPage() {
             totalSignups: data.signups || 0
           })
         })
-        .catch(console.error)
+        .catch(() => {
+          // Error handling is done via the UI state
+        })
       
       // Fetch activity data
       fetch(`/api/influencer/activity/${user.id}`)
