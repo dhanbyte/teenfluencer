@@ -4,8 +4,7 @@ import { useState, useEffect } from 'react'
 import { useUser } from '@clerk/nextjs'
 import { Card, CardContent, CardHeader, CardTitle } from '@/Components/ui/card'
 import { Badge } from '@/Components/ui/badge'
-import { BarChart3, TrendingUp, Calendar, Target } from 'lucide-react'
-import { db } from '@/lib/database'
+import { BarChart3, TrendingUp, Target } from 'lucide-react'
 
 // Analytics dashboard for influencers
 export default function AnalyticsPage() {
@@ -103,7 +102,12 @@ export default function AnalyticsPage() {
         <CardContent>
           {analytics.topProducts.length > 0 ? (
             <div className="space-y-4">
-              {analytics.topProducts.map((product: Record<string, unknown>, index: number) => (
+              {analytics.topProducts.map((product: { 
+                id: string;
+                product_id: string;
+                action: 'click' | 'conversion';
+                timestamp: string;
+              }, index: number) => (
                 <div key={product.id} className="flex items-center justify-between p-4 border rounded-lg">
                   <div className="flex items-center gap-3">
                     <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">

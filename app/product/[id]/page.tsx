@@ -1,8 +1,9 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { useParams, useSearchParams } from 'next/navigation'
-import { Card, CardContent } from '@/Components/ui/card'
+import { Product } from '@/lib/database'
+import Image from 'next/image'
 import { Button } from '@/Components/ui/button'
 import { Badge } from '@/Components/ui/badge'
 import { ShoppingCart, Star, Shield, Truck } from 'lucide-react'
@@ -13,44 +14,43 @@ export default function ProductPage() {
   const productId = params.id as string
   const referralCode = searchParams.get('ref')
   
-  const [product, setProduct] = useState<any>(null)
+  const [product, setProduct] = useState<Product | null>(null)
   const [loading, setLoading] = useState(true)
 
-  useEffect(() => {
-    fetchProduct()
-    if (referralCode) {
-      trackClick()
-    }
-  }, [productId, referralCode])
-
-  const fetchProduct = async () => {
+    const fetchProduct = useCallback(async () => {
     try {
       const response = await fetch(`/api/admin/products`)
       const products = await response.json()
-      const foundProduct = products.find((p: any) => p.id === productId)
-      setProduct(foundProduct)
+      const foundProduct = products.find((p: Product) => p.id === productId)
+      setProduct(foundProduct || null)
     } catch (error) {
       console.error('Error fetching product:', error)
-    } finally {
-      setLoading(false)
+      setProduct(null)
     }
-  }
+  }, [productId])
 
-  const trackClick = async () => {
+  const trackClick = useCallback(async () => {
     try {
       await fetch('/api/influencer/track', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          influencerId: referralCode,
-          productId: productId,
+          productId,
+          referralCode,
           action: 'click'
         })
       })
     } catch (error) {
       console.error('Error tracking click:', error)
     }
-  }
+  }, [productId, referralCode])
+
+  useEffect(() => {
+    if (!productId) return
+    
+    trackClick()
+    fetchProduct()
+  }, [productId, referralCode, trackClick, fetchProduct])
 
   const handlePurchase = async () => {
     if (referralCode) {
@@ -80,7 +80,7 @@ export default function ProductPage() {
       <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-800 mb-2">Product Not Found</h1>
-          <p className="text-gray-600">The product you're looking for doesn't exist.</p>
+          <p className="text-gray-600">The product you&apos;re looking for doesn&apos;t exist.</p>
         </div>
       </div>
     )
@@ -94,10 +94,12 @@ export default function ProductPage() {
             {/* Product Image */}
             <div className="space-y-4">
               <div className="aspect-square bg-white rounded-2xl shadow-lg overflow-hidden">
-                <img 
+                <Image 
                   src={product.image} 
                   alt={product.name}
                   className="w-full h-full object-cover"
+                  width={500}
+                  height={500}
                 />
               </div>
             </div>
@@ -120,7 +122,7 @@ export default function ProductPage() {
               {referralCode && (
                 <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
                   <p className="text-blue-800 text-sm">
-                    🎉 You're supporting an influencer! They'll earn {product.commission}% commission from your purchase.
+                    🎉 You&apos;re supporting an influencer! They&apos;ll earn {product.commission}% commission from your purchase.
                   </p>
                 </div>
               )}

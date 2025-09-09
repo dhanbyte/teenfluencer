@@ -172,7 +172,12 @@ export default function EarningsPage() {
         <CardContent>
           {recentActivity.length > 0 ? (
             <div className="space-y-4">
-              {recentActivity.map((activity: Record<string, unknown>) => (
+              {recentActivity.map((activity: {
+                id: string;
+                action: 'click' | 'conversion';
+                product_id: string;
+                commission?: number;
+              }) => (
                 <div key={activity.id} className="flex items-center justify-between p-4 border rounded-lg">
                   <div className="flex items-center gap-3">
                     <Calendar className="h-5 w-5 text-gray-500" />
@@ -185,7 +190,7 @@ export default function EarningsPage() {
                     <Badge variant={activity.action === 'conversion' ? 'default' : 'secondary'}>
                       {activity.action}
                     </Badge>
-                    {activity.commission && (
+                    {activity.commission !== undefined && (
                       <p className="text-sm text-green-600 font-medium">+₹{activity.commission}</p>
                     )}
                   </div>

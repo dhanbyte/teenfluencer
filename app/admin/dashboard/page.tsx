@@ -1,3 +1,5 @@
+"use client";
+
 interface Activity {
   action: string;
   influencers?: { name?: string };
@@ -5,7 +7,7 @@ interface Activity {
   commission?: string | number;
   timestamp: string | number | Date;
 }
-"use client";
+
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { Users, DollarSign, TrendingUp, Eye, LogOut } from 'lucide-react';
