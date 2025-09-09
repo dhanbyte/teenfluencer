@@ -6,6 +6,7 @@ module.exports = {
     './Components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+  presets: [require('tailwindcss/defaultConfig')],
   theme: {
     extend: {
       colors: {

@@ -7,7 +7,7 @@ export async function GET(
 ) {
   try {
     const influencerId = params.id
-    const tracking = db.getTracking(influencerId)
+    const tracking = await Promise.resolve(db.getTracking(influencerId))
     return NextResponse.json(tracking)
   } catch (error) {
     console.error('Error fetching activity:', error)
