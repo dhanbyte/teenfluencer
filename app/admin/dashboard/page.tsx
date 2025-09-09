@@ -283,16 +283,18 @@ export default function AdminDashboard() {
                           <p className="text-gray-400">No recent activity</p>
                         </div>
                       ) : (
-                        recentActivity.map((activity: Activity, index: number) => (
+                        recentActivity.map((activity, index) => (
                           <div key={index} className="flex justify-between items-center py-3 border-b border-white/10 last:border-b-0">
                             <div>
                               <div className="text-white font-medium">{activity.action}</div>
                               <div className="text-gray-400 text-sm">
-                                {activity.influencers?.name || activity.products?.name || activity.commission}
+                                {(activity.influencers && 'name' in activity.influencers ? activity.influencers.name : '') ||
+                                 (activity.products && 'name' in activity.products ? activity.products.name : '') ||
+                                 activity.commission}
                               </div>
                             </div>
                             <div className="text-gray-400 text-sm">
-                              {new Date(activity.timestamp as string | number | Date).toLocaleDateString()}
+                              {activity.timestamp ? new Date(activity.timestamp).toLocaleDateString() : ''}
                             </div>
                           </div>
                         ))

@@ -63,8 +63,15 @@ const earnings: InfluencerEarnings[] = [
 ]
 
 const tracking: InfluencerTracking[] = []
-const withdrawalRequests: any[] = []
-interface Product {
+interface WithdrawalRequest {
+  id: string;
+  influencer_id: string;
+  amount: number;
+  status: 'pending' | 'approved' | 'rejected';
+  requested_at: string;
+}
+const withdrawalRequests: WithdrawalRequest[] = []
+export interface Product {
   id: string;
   name: string;
   description: string;

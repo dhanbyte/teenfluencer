@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import type { Product } from '@/lib/database'
 
 export async function GET() {
   try {
@@ -7,7 +8,7 @@ export async function GET() {
     const data = await response.json()
     
     // Transform products for influencer use
-  const products = data.data?.map((product: Record<string, unknown>) => ({
+  const products = data.data?.map((product: Product) => ({
       id: product.id,
       name: product.name,
       description: product.description,

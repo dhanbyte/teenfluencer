@@ -53,7 +53,7 @@ export default function ApplyPage() {
               <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-4" />
               <h2 className="text-2xl font-bold text-gray-900 mb-2">Application Submitted!</h2>
               <p className="text-gray-600">
-                We'll review your application and get back to you within 24 hours.
+                We&apos;ll review your application and get back to you within 24 hours.
               </p>
             </div>
             
