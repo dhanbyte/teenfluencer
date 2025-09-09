@@ -36,7 +36,7 @@ interface InfluencerTracking {
 }
 
 // In-memory storage
-let influencers: Influencer[] = [
+const influencers: Influencer[] = [
   {
     id: 'inf_1',
     name: 'Demo Influencer',
@@ -51,7 +51,7 @@ let influencers: Influencer[] = [
   }
 ]
 
-let earnings: InfluencerEarnings[] = [
+const earnings: InfluencerEarnings[] = [
   {
     influencer_id: 'inf_1',
     total_clicks: 45,
@@ -62,9 +62,20 @@ let earnings: InfluencerEarnings[] = [
   }
 ]
 
-let tracking: InfluencerTracking[] = []
-let withdrawalRequests: any[] = []
-let products: any[] = [
+const tracking: InfluencerTracking[] = []
+const withdrawalRequests: any[] = []
+interface Product {
+  id: string;
+  name: string;
+  description: string;
+  price: number;
+  image: string;
+  category: string;
+  commission: number;
+  brand: string;
+  created_at: string;
+}
+const products: Product[] = [
   {
     id: 'prod_1',
     name: 'Wireless Headphones',
@@ -82,7 +93,7 @@ export const db = {
   withdrawalRequests,
   products,
   getProducts: () => products,
-  addProduct: (product: any) => {
+  addProduct: (product: Product) => {
     products.push(product)
     return product
   },

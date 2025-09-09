@@ -172,7 +172,7 @@ export default function EarningsPage() {
         <CardContent>
           {recentActivity.length > 0 ? (
             <div className="space-y-4">
-              {recentActivity.map((activity: any) => (
+              {recentActivity.map((activity: Record<string, unknown>) => (
                 <div key={activity.id} className="flex items-center justify-between p-4 border rounded-lg">
                   <div className="flex items-center gap-3">
                     <Calendar className="h-5 w-5 text-gray-500" />

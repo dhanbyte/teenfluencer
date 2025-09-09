@@ -16,7 +16,14 @@ export default function ApplyPage() {
     followers: ''
   })
   const [submitted, setSubmitted] = useState(false)
-  const [existingApplication, setExistingApplication] = useState<any>(null)
+  interface ApplicationData {
+    name: string;
+    email: string;
+    instagram?: string;
+    youtube?: string;
+    followers: string;
+  }
+  const [existingApplication, setExistingApplication] = useState<ApplicationData | null>(null)
 
   useEffect(() => {
     const savedApplication = localStorage.getItem('influencerApplication')

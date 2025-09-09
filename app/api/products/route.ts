@@ -7,7 +7,7 @@ export async function GET() {
     const data = await response.json()
     
     // Transform products for influencer use
-    const products = data.data?.map((product: any) => ({
+  const products = data.data?.map((product: Record<string, unknown>) => ({
       id: product.id,
       name: product.name,
       description: product.description,
