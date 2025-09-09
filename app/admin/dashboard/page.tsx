@@ -245,48 +245,51 @@ export default function AdminDashboard() {
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                     <div className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-6">
                       <div className="text-center">
-                        <div className="text-3xl font-bold text-blue-400 mb-2">1,250</div>
+                        <div className="text-3xl font-bold text-blue-400 mb-2">{totalProducts}</div>
                         <div className="text-gray-300 text-sm">Total Products</div>
                       </div>
                     </div>
                     <div className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-6">
                       <div className="text-center">
-                        <div className="text-3xl font-bold text-green-400 mb-2">85%</div>
-                        <div className="text-gray-300 text-sm">Conversion Rate</div>
+                        <div className="text-3xl font-bold text-green-400 mb-2">{totalUsers}</div>
+                        <div className="text-gray-300 text-sm">Total Influencers</div>
                       </div>
                     </div>
                     <div className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-6">
                       <div className="text-center">
-                        <div className="text-3xl font-bold text-purple-400 mb-2">₹45,000</div>
-                        <div className="text-gray-300 text-sm">Monthly Revenue</div>
+                        <div className="text-3xl font-bold text-purple-400 mb-2">₹{totalEarnings.toLocaleString()}</div>
+                        <div className="text-gray-300 text-sm">Total Earnings</div>
                       </div>
                     </div>
                     <div className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-6">
                       <div className="text-center">
-                        <div className="text-3xl font-bold text-yellow-400 mb-2">320</div>
-                        <div className="text-gray-300 text-sm">Active Links</div>
+                        <div className="text-3xl font-bold text-yellow-400 mb-2">{activeCampaigns}</div>
+                        <div className="text-gray-300 text-sm">Active Campaigns</div>
                       </div>
                     </div>
                   </div>
                   <div className="bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-8">
                     <h4 className="text-xl font-bold text-white mb-4">Recent Activity</h4>
                     <div className="space-y-4">
-                      {[
-                        { action: 'New product added', product: 'Wireless Headphones Pro', time: '2 hours ago' },
-                        { action: 'Referral link generated', product: 'Smart Fitness Watch', time: '4 hours ago' },
-                        { action: 'Commission paid', amount: '₹250', time: '6 hours ago' },
-                        { action: 'New influencer joined', name: 'John Doe', time: '8 hours ago' }
-                      ].map((activity, index) => (
-                        <div key={index} className="flex justify-between items-center py-3 border-b border-white/10 last:border-b-0">
-                          <div>
-                            <div className="text-white font-medium">{activity.action}</div>
+                      {recentActivity.length === 0 ? (
+                        <div className="text-center py-8">
+                          <p className="text-gray-400">No recent activity</p>
+                        </div>
+                      ) : (
+                        recentActivity.map((activity: any, index: number) => (
+                          <div key={index} className="flex justify-between items-center py-3 border-b border-white/10 last:border-b-0">
+                            <div>
+                              <div className="text-white font-medium">{activity.action}</div>
+                              <div className="text-gray-400 text-sm">
+                                {activity.influencers?.name || activity.products?.name || activity.commission}
+                              </div>
+                            </div>
                             <div className="text-gray-400 text-sm">
-                              {activity.product || activity.amount || activity.name}
+                              {new Date(activity.timestamp).toLocaleDateString()}
                             </div>
                           </div>
-                          <div className="text-gray-400 text-sm">{activity.time}</div>
-                        </div>
-                      ))}
+                        ))
+                      )}
                     </div>
                   </div>
                 </div>
